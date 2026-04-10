@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <div class = "container"><a href="{% url "index" %}" class="navbar-brand">MyApplication</a></div>
-         <div class = "container"><a href="admin">Панель администратора</a></div>
+         <div class = "container" style="justify-content: flex-end"><a href="admin">Панель администратора</a></div>
     </nav>
     <main class="container">{% block my_content%}{% endblock %}</main>
 </body>
