@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Animals
 
 def index(request):
@@ -7,5 +7,8 @@ def index(request):
     return render(request, 'animals.html', {'animals': animals})
 
 def get_animal(request, animal_id):
-    animal = Animals.objects.get(pk=animal_id)
+    try:
+        animal = Animals.objects.get(pk=animal_id)
+    except Animals.DoesNotExist:
+        raise Http404("Обьект не найден")
     return render(request, 'single_animal.html', {'animal': animal})
